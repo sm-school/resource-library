@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class Example extends React.Component {
@@ -8,6 +9,10 @@ class Example extends React.Component {
 			</div>
 		);
 	}
+};
+
+Example.propTypes = {
+	example: PropTypes.string,
 };
 
 export default Example;

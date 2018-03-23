@@ -30,4 +30,5 @@ function saveThumbnail (imageData, url) {
 	});
 }
 
+module.exports.getThumbnail = getThumbnail;
 module.exports.saveThumbnail = saveThumbnail;

@@ -1,10 +1,17 @@
 import React from 'react';
-import Example from '../src/components/Example';
 import renderer from 'react-test-renderer';
 
-describe('Example', () => {
-  it('matches the snapshot', () => {
-    const tree = renderer.create(<Example />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+import Thumbnail from '../src/components/Thumbnail';
+
+describe('Thumbnail', () => {
+	it('matches the snapshot', () => {
+		const tree = renderer.create(
+			<Thumbnail
+				// not actually an image - doesn't matter here
+				imgDataUrl = 'data:image/jpeg;base64,dGVzdCBzdHJpbmc='
+				siteUrl = 'nytimes.com'
+			/>
+		).toJSON();
+		expect(tree).toMatchSnapshot();
+	});
 });

@@ -1,7 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Example matches the snapshot 1`] = `
-<div>
-  Containers go here
+exports[`Thumbnail matches the snapshot 1`] = `
+<div
+  class="thumbnail"
+>
+  <img
+    alt="Thumbnail image for nytimes.com"
+    src={undefined}
+  />
 </div>
 `;
