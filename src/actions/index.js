@@ -1,10 +1,35 @@
 import {
-	UPDATE_EXAMPLE
+	DELETE_SAVED_SITE,
+	SHOW_SAVED_SITES,
 } from './types';
 
-export const updateExample = example => {
+export const deleteSite = siteId => {
 	return {
-		type: UPDATE_EXAMPLE,
-		example
+		type: DELETE_SAVED_SITE,
+		siteId,
+	};
+};
+
+export const showSavedSites = savedSites => {
+	return {
+		type: SHOW_SAVED_SITES,
+		savedSites,
+	};
+};
+
+function receiveSavedSites(savedSites) {
+	return {
+		type: 'RECEIVE_SAVED_SITES',
+		savedSites,
+	};
+}
+
+function fetchSavedSites () {
+	// fetch goes here
+}
+
+export const loadSavedSites = () => {
+	return (dispatch) => {
+		return dispatch(fetchSavedSites());
 	};
 };

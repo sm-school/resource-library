@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import example from './example';
+import savedSites from './savedSites';
 
 export default combineReducers({
-	example
+	savedSites,
 });

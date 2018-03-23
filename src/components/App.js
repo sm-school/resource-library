@@ -1,14 +1,15 @@
 import React from 'react';
 import '../styles/components/App.scss';
+import AddSite from './AddSite.js';
+import SavedSitesContainer from '../containers/SavedSitesContainer.js';
 
-class App extends React.Component {
-	render(){
-		return (
-			<div className="row app">
-				App will go here
-			</div>
-		);
-	}
+function App () {
+	return (
+		<div className="row app">
+			<AddSite />
+			<SavedSitesContainer />
+		</div>
+	);
 }
 
 export default App;
