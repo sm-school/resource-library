@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class SavedSite extends React.Component {
-	render() {
-		return (
-			<li>
-				{this.props.site.title}<br />
-				{this.props.site.url}<br />
-				Saved on: {this.props.site.added}
-			</li>
-		);
-	}
+function SavedSite (props) {
+	return (
+		<li>
+			{props.site.title}<br />
+			{props.site.url}<br />
+			Saved on: {props.site.added}
+		</li>
+	);
 }
 
 SavedSite.propTypes = {
@@ -18,4 +16,4 @@ SavedSite.propTypes = {
 	site: PropTypes.object,
 };
 
-export default SavedSites;
+export default SavedSite;

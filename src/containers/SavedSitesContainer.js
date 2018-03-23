@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { deleteSavedSite, showSavedSites } from '../actions';
+import SavedSites from '../components/SavedSites';
 
 const getSavedSites = (state) => {
 	return state.savedSites;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function AddSite () {
+function AddSite (props) {
 	return (
 		<div>
 			AddSite component
