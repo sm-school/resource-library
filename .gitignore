@@ -1,3 +1,7 @@
 /node_modules
 /dist
 .DS_Store
+.envrc
+*~
+resource-library.sublime-project
+resource-library.sublime-workspace
