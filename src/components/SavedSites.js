@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import SavedSite from './SavedSite';
 
 function SavedSites (props) {
+	console.log(props);
 	return (
 		<div>
 			<ul className="saved-sites">
-				{props.savedSites.map( result => {
-					return <SavedSite
-						// deleteSite={props.deleteSite}
-						site={result}
-						key={result.siteId}
-					/>;
-				})}
+				{
+					props.savedSites.map( result => {
+						return <SavedSite
+							// deleteSite={props.deleteSite}
+							site={result}
+							key={result.siteId}
+						/>;
+					} )
+				}
 			</ul>
 		</div>
 	);

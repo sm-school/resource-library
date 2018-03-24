@@ -1,6 +1,6 @@
 import {
 	DELETE_SAVED_SITE,
-	SHOW_SAVED_SITES,
+	RECEIVE_SAVED_SITES,
 } from './types';
 
 export const deleteSite = siteId => {
@@ -10,22 +10,22 @@ export const deleteSite = siteId => {
 	};
 };
 
-export const showSavedSites = savedSites => {
+function receiveSavedSites (savedSites) {
 	return {
-		type: SHOW_SAVED_SITES,
-		savedSites,
-	};
-};
-
-function receiveSavedSites(savedSites) {
-	return {
-		type: 'RECEIVE_SAVED_SITES',
+		type: RECEIVE_SAVED_SITES,
 		savedSites,
 	};
 }
 
 function fetchSavedSites () {
-	// fetch goes here
+	return (dispatch) => {
+		return fetch( 'http://localhost/api/sites/all' )
+			.then( response => response.json() )
+			.then( results => {
+				console.log('Fetched', results);
+				dispatch( receiveSearch(results) );
+			} );
+	};
 }
 
 export const loadSavedSites = () => {

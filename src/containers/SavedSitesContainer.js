@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { deleteSavedSite, showSavedSites } from '../actions';
+import { deleteSavedSite } from '../actions';
 import SavedSites from '../components/SavedSites';
 
 const getSavedSites = (state) => {
-	return state.savedSites;
+	return state.savedSites || [];
 };
 
 const mapStateToProps = state => ({ savedSites: getSavedSites(state) });
