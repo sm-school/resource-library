@@ -10,8 +10,7 @@ const api = require('./api.js');
 	'THINGBOARD_DB_NAME',
 	'THINGBOARD_DB_USER',
 	'THINGBOARD_DB_PASS',
-	'THINGBOARD__PORT',
-	'THINGBOARD__SESSION_SECRET',
+	'THINGBOARD_PORT',
 ].forEach( env => {
     if (!process.env[env]) {
         console.log(`Can't run Thingboard: ${env} not set.`);

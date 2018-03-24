@@ -12,34 +12,65 @@ const db = pg({
 
 function getSavedSites () {
 	// gary_oldman_everything.jpg
-	db.all('SELECT url, title, description, saved FROM site')
-		.then( savedSites => {
-			return savedSites;
+	const sql = `
+SELECT s.url, s.title, s.description, s.saved, array_agg(t.name) AS tags
+FROM site s
+INNER JOIN site_tag st ON st.site_id = s.id
+INNER JOIN tag t ON t.id = st.tag_id
+GROUP BY s.url, s.title, s.description, s.saved`;
+
+	return db.manyOrNone(sql)
+		.then( sites => {
+			return sites;
 		})
 		.catch( error => {
-			// error;
+			console.log({ error: error.message });
+		});
+}
+
+function getTags (url) {
+	const sql = `
+SELECT t.name
+FROM site s, tag t, site_tag st
+WHERE st.site_id = s.id
+AND st.tag_id = t.id
+AND s.url = $1`;
+
+	return db.manyOrNone(sql, url)
+		.then ( queryResult => {
+			const tags = queryResult.reduce( (acc, tag) => {
+				acc.push(tag.name);
+				return acc;
+			}, []);
+
+			return tags;
+		})
+		.catch ( error => {
+			console.log({ error: error.message });
 		});
 }
 
 function getThumbnail (url) {
-	db.one('SELECT thumbnail FROM site WHERE url=$1', url)
+	return db.one('SELECT thumbnail FROM site WHERE url=$1', url)
 		.then( imageData => {
 			return imageData;
 		})
 		.catch( error => {
-			// error;
+			console.log({ error: error.message });
 		});
 }
 
 function saveThumbnail (imageData, url) {
-	db.none('INSERT INTO site (thumbnail) VALUES ($1) WHERE url=$2', imageData, url)
+	return db.none('INSERT INTO site (thumbnail) VALUES ($1) WHERE url=$2', imageData, url)
 		.then(() => {
 			// success;
 		})
 		.catch(error => {
-			// error;
+			console.log({ error: error.message });
 		});
 }
 
+module.exports.getSavedSites = getSavedSites;
+module.exports.getTags = getTags;
 module.exports.getThumbnail = getThumbnail;
 module.exports.saveThumbnail = saveThumbnail;
